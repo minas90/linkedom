@@ -171,7 +171,7 @@ class Document extends NonElementParentNode {
     return this[EVENT_TARGET];
   }
 
-  createAttribute(name) { return new Attr(this, name); }
+  createAttribute(name) { return new Attr(this, name.toLowerCase()); }
   createCDATASection(data) { return new CDATASection(this, data); }
   createComment(textContent) { return new Comment(this, textContent); }
   createDocumentFragment() { return new DocumentFragment(this); }
