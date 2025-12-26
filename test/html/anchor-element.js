@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('HTMLAnchorElement');
+const assert = (await import('../assert.js')).default.for('HTMLAnchorElement');
 
-const {parseHTML} = global[Symbol.for('linkedom')];
+const {parseHTML} = globalThis[Symbol.for('linkedom')];
 
 const {document} = parseHTML('<a href="https://google.com/?q=1&page=2">click me</a>');
 

@@ -1,5 +1,5 @@
 {
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
     "basichtml": "^2.4.6",
     "jsdom": "^16.4.0",

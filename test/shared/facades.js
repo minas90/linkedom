@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('Facades');
+const assert = (await import('../assert.js')).default.for('Facades');
 
-const {Attr, parseHTML} = global[Symbol.for('linkedom')];
+const {Attr, parseHTML} = globalThis[Symbol.for('linkedom')];
 
 const {Attr: $Attr, document} = parseHTML('');
 

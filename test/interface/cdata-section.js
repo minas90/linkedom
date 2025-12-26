@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('CDATASection');
+const assert = (await import('../assert.js')).default.for('CDATASection');
 
-const {DOMParser} = global[Symbol.for('linkedom')];
+const {DOMParser} = globalThis[Symbol.for('linkedom')];
 
 // Use xml parsing because CDATA is treated like a comment in html parsing
 let document = (new DOMParser).parseFromString('<html><body><![CDATA[test]]>text</body></html>', 'text/xml');

@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('CharacterData');
+const assert = (await import('../assert.js')).default.for('CharacterData');
 
-const {parseHTML} = global[Symbol.for('linkedom')];
+const {parseHTML} = globalThis[Symbol.for('linkedom')];
 
 let {document} = parseHTML('<html><!--comment-->text</html>');
 

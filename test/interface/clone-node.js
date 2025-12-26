@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('CloneNode');
+const assert = (await import('../assert.js')).default.for('CloneNode');
 
-const { parseHTML } = global[Symbol.for('linkedom')];
+const { parseHTML } = globalThis[Symbol.for('linkedom')];
 
 const { document } = parseHTML('<html><body></body></html>');
 

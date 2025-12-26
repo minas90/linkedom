@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('EventTarget');
+const assert = (await import('../assert.js')).default.for('EventTarget');
 
-const { parseHTML } = global[Symbol.for('linkedom')];
+const { parseHTML } = globalThis[Symbol.for('linkedom')];
 
 const { Event, document, window, EventTarget } = parseHTML(
   '<html><div id="container"><button id="buttonTarget" type="button">Click me!</button></div></html>',

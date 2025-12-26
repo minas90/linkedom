@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('Facades');
+const assert = (await import('../assert.js')).default.for('Facades');
 
-const {parseHTML, parseJSON, toJSON} = global[Symbol.for('linkedom')];
+const {parseHTML, parseJSON, toJSON} = globalThis[Symbol.for('linkedom')];
 
 assert(parseJSON([11,-1]).toString(), '<#document-fragment></#document-fragment>');
 assert(parseJSON([9,10,'html',-1]).toString(), '<!DOCTYPE html>');

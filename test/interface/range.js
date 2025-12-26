@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('Range');
+const assert = (await import('../assert.js')).default.for('Range');
 
-const {parseHTML, DOMParser} = global[Symbol.for('linkedom')];
+const {parseHTML, DOMParser} = globalThis[Symbol.for('linkedom')];
 
 const {document} = parseHTML('<html><div class="test">abc</div></html>');
 

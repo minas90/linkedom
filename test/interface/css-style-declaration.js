@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('CSSStyleDeclaration');
+const assert = (await import('../assert.js')).default.for('CSSStyleDeclaration');
 
-const {parseHTML} = global[Symbol.for('linkedom')];
+const {parseHTML} = globalThis[Symbol.for('linkedom')];
 
 const {document} = parseHTML('');
 

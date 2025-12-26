@@ -1,4 +1,4 @@
-const { parseHTML, HTMLElement } = require('../cjs');
+const { parseHTML, HTMLElement } = await import('../src/index.js');
 const { createServer } = require('http');
 
 

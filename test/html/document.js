@@ -1,8 +1,8 @@
-const assert = require('../assert.js').for('HTMLDocument');
+const assert = (await import('../assert.js')).default.for('HTMLDocument');
 
-const {parseHTML} = global[Symbol.for('linkedom')];
+const {parseHTML} = globalThis[Symbol.for('linkedom')];
 
-const {DocumentFragment} = require('../../cjs/interface/document-fragment.js');
+const {DocumentFragment} = await import('../../src/interface/document-fragment.js');
 
 const {Document, DOMParser, window, setTimeout} = parseHTML(`
 <!doctype html>

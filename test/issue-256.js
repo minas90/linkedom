@@ -1,4 +1,4 @@
-const { parseHTML } = require('../cjs');
+const { parseHTML } = await import('../src/index.js');
 
 let { document } = parseHTML('<div><!--comment--></div>');
 

@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('HTMLMetaElement');
+const assert = (await import('../assert.js')).default.for('HTMLMetaElement');
 
-const {parseHTML} = global[Symbol.for('linkedom')];
+const {parseHTML} = globalThis[Symbol.for('linkedom')];
 
 // COMBINATIONS OF ATTRIBUTES
 // name & content

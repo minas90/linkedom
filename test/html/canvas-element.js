@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('HTMLCanvasElement');
+const assert = (await import('../assert.js')).default.for('HTMLCanvasElement');
 
-const {parseHTML} = global[Symbol.for('linkedom')];
+const {parseHTML} = globalThis[Symbol.for('linkedom')];
 
 const canvas = parseHTML('<canvas>').document.querySelector('canvas');
 

@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('SVGDocument');
+const assert = (await import('../assert.js')).default.for('SVGDocument');
 
-const {DOMParser, Document} = global[Symbol.for('linkedom')];
+const {DOMParser, Document} = globalThis[Symbol.for('linkedom')];
 
 const document = (new DOMParser).parseFromString('<!doctype svg><svg></svg>', 'image/svg+xml');
 

@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('TreeWalker');
+const assert = (await import('../assert.js')).default.for('TreeWalker');
 
-const {parseHTML} = global[Symbol.for('linkedom')];
+const {parseHTML} = globalThis[Symbol.for('linkedom')];
 
 const {document} = parseHTML('<html><p>b</p><p>c</p><p>d</p></html>');
 

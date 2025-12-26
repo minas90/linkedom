@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('HTMLTemplateElement');
+const assert = (await import('../assert.js')).default.for('HTMLTemplateElement');
 
-const {parseHTML} = global[Symbol.for('linkedom')];
+const {parseHTML} = globalThis[Symbol.for('linkedom')];
 
 let {document} = parseHTML('<template><div>foo</div><div>bar</div></template>');
 

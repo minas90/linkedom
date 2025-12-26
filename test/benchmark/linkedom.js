@@ -1,5 +1,6 @@
-const benchmark = require('./index.js');
-const {DOMParser} = require('../../cjs/index.js');
+import benchmark from './index.js';
+import { DOMParser } from '../../src/index.js';
+
 const dp = new DOMParser;
 
 benchmark('linkedom', html => dp.parseFromString(html, 'text/html'));

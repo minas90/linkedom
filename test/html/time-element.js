@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('HTMLTImeElement');
+const assert = (await import('../assert.js')).default.for('HTMLTImeElement');
 
-const {parseHTML} = global[Symbol.for('linkedom')];
+const {parseHTML} = globalThis[Symbol.for('linkedom')];
 
 const {document} = parseHTML('<time datetime="1989-06-03 16:00:00">A big event</time>');
 

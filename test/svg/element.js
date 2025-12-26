@@ -1,5 +1,5 @@
-const assert = require('../assert.js').for('SVGElement');
-const {parseHTML, SVGElement, DOMParser} = global[Symbol.for('linkedom')];
+const assert = (await import('../assert.js')).default.for('SVGElement');
+const {parseHTML, SVGElement, DOMParser} = globalThis[Symbol.for('linkedom')];
 
 let {document} = parseHTML('<div><svg><rect /></svg></div>');
 

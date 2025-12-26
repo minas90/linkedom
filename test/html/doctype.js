@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('DocumentType');
+const assert = (await import('../assert.js')).default.for('DocumentType');
 
-const {parseHTML, parseJSON} = global[Symbol.for('linkedom')];
+const {parseHTML, parseJSON} = globalThis[Symbol.for('linkedom')];
 
 let window = parseHTML(`
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN"

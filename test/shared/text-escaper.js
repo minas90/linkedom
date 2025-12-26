@@ -3,9 +3,9 @@ const REBODY = BODY.replace(/&quot;/g, '"');
 const HTML = `<html id="html" class="live">${BODY}</html>`;
 const REHTML = `<html id="html" class="live">${REBODY}</html>`;
 
-const assert = require('../assert.js').for('Text Escaper');
+const assert = (await import('../assert.js')).default.for('Text Escaper');
 
-const {parseHTML} = global[Symbol.for('linkedom')];
+const {parseHTML} = globalThis[Symbol.for('linkedom')];
 
 const {document} = parseHTML('<!DOCTYPE html>' + HTML);
 

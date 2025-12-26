@@ -1,8 +1,11 @@
-const {readFile} = require('fs');
-const {join} = require('path');
-const {memoryUsage} = require('process');
+import { readFile } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { memoryUsage } from 'process';
 
-const onContent = require('./content.js');
+import onContent from './content.js';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const logHeap = (message = 'total heap memory') => {
   const used = memoryUsage().heapUsed / 1024 / 1024;
@@ -37,7 +40,7 @@ P.S. the :ce test is available for all other tests too.
 
 fileName += '.html';
 
-module.exports = (name, createDocument, times = 2) => {
+export default (name, createDocument, times = 2) => {
   console.log('');
   console.log(`\x1b[7m\x1b[1m ${name} \x1b[0m\x1b[7m\x1b[2m benchmark for \x1b[0m\x1b[7m ./${fileName.padEnd(22, ' ')}\x1b[0m`);
   console.log('');

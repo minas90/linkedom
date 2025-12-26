@@ -1,7 +1,7 @@
-const assert = require('../assert.js').for('HTMLClassElement');
+const assert = (await import('../assert.js')).default.for('HTMLClassElement');
 
-const {parseHTML} = global[Symbol.for('linkedom')];
-const {MIME} = require('../../cjs/shared/symbols.js');
+const {parseHTML} = globalThis[Symbol.for('linkedom')];
+const {MIME} = await import('../../src/shared/symbols.js');
 
 const {document} = parseHTML('');
 

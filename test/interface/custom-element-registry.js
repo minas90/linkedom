@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('CustomElementRegistry');
+const assert = (await import('../assert.js')).default.for('CustomElementRegistry');
 
-const {parseHTML} = global[Symbol.for('linkedom')];
+const {parseHTML} = globalThis[Symbol.for('linkedom')];
 
 const {HTMLElement, HTMLButtonElement, HTMLTemplateElement, customElements, document} = parseHTML(`
 <html>

@@ -19,7 +19,7 @@ const clean = str => browser ? str.replace(/\x1b\[\dm/g, '') : str;
 
 const crawl = (element, kind) => {
   const nodes = element[kind];
-  const {length} = nodes;
+  const { length } = nodes;
   let count = length;
   for (let i = 0; i < length; i++)
     count += crawl(nodes[i], kind);
@@ -28,7 +28,7 @@ const crawl = (element, kind) => {
 
 const sleep = ms => new Promise($ => setTimeout($, ms));
 
-const onContent = async (createDocument, html, times, logHeap = () => {}, cloneBench = true, customElements = false, mutationObserver = false) => {
+const onContent = async (createDocument, html, times, logHeap = () => { }, cloneBench = true, customElements = false, mutationObserver = false) => {
 
   console.time(clean('\x1b[1mtotal benchmark time\x1b[0m'));
 
@@ -51,16 +51,16 @@ const onContent = async (createDocument, html, times, logHeap = () => {}, cloneB
   console.log();
 
   if (customElements) {
-    let {constructor} = document.documentElement;
+    let { constructor } = document.documentElement;
     while (constructor.name !== 'HTMLElement')
       constructor = Object.getPrototypeOf(constructor);
-    (document.defaultView.customElements || global.customElements).define(
+    (document.defaultView.customElements || globalThis.customElements).define(
       'custom-element',
       class extends constructor {
         static get observedAttributes() { return ['nothing', 'really']; }
-        attributeChangedCallback() {}
-        connectedCallback() {}
-        disconnectedCallback() {}
+        attributeChangedCallback() { }
+        connectedCallback() { }
+        disconnectedCallback() { }
       }
     );
     console.log(clean('\x1b[1mCustom Elements\x1b[0m enabled via ' + constructor.name));
@@ -69,7 +69,7 @@ const onContent = async (createDocument, html, times, logHeap = () => {}, cloneB
 
   let observed = 0;
   if (mutationObserver) {
-    const {MutationObserver} = document.defaultView;
+    const { MutationObserver } = document.defaultView;
     const mo = new MutationObserver(() => {
       observed++;
     });
@@ -118,8 +118,8 @@ const onContent = async (createDocument, html, times, logHeap = () => {}, cloneB
       const html = bench(' html.cloneNode(true)', () => document.documentElement.cloneNode(true), 1);
       console.log(' cloning: OK');
 
-      const {outerHTML: cloned} = html;
-      const {outerHTML: original} = document.documentElement;
+      const { outerHTML: cloned } = html;
+      const { outerHTML: original } = document.documentElement;
       console.log(' outerHTML: OK');
 
       if (cloned.length !== original.length)
@@ -234,16 +234,4 @@ const onContent = async (createDocument, html, times, logHeap = () => {}, cloneB
   console.timeEnd(clean('\x1b[1mtotal benchmark time\x1b[0m'));
 };
 
-try {
-  module.exports = onContent;
-}
-catch (o_O) {
-  browser = true;
-  onContent(
-    html => {
-      return (new DOMParser).parseFromString(html, 'text/html');
-    },
-    `<!DOCTYPE html>${document.documentElement.outerHTML}`,
-    2
-  );
-}
+export default onContent;

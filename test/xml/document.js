@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('XMLDocument');
+const assert = (await import('../assert.js')).default.for('XMLDocument');
 
-const {DOMParser} = global[Symbol.for('linkedom')];
+const {DOMParser} = globalThis[Symbol.for('linkedom')];
 
 const document = (new DOMParser).parseFromString('<root></root>', 'text/xml');
 

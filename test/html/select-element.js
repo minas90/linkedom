@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('HTMLSelectElement');
+const assert = (await import('../assert.js')).default.for('HTMLSelectElement');
 
-const {parseHTML} = global[Symbol.for('linkedom')];
+const {parseHTML} = globalThis[Symbol.for('linkedom')];
 
 let {document} = parseHTML('<select></select>');
 let {firstElementChild: select} = document;

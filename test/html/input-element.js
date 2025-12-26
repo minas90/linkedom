@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('HTMLInputElement');
+const assert = (await import('../assert.js')).default.for('HTMLInputElement');
 
-const {parseHTML} = global[Symbol.for('linkedom')];
+const {parseHTML} = globalThis[Symbol.for('linkedom')];
 
 let {document} = parseHTML('<input />');
 

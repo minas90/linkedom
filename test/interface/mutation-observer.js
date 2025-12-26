@@ -1,6 +1,6 @@
-const assert = require('../assert.js').for('MutationObserver');
+const assert = (await import('../assert.js')).default.for('MutationObserver');
 
-const {parseHTML} = global[Symbol.for('linkedom')];
+const {parseHTML} = globalThis[Symbol.for('linkedom')];
 
 const milliseconds = ms => new Promise($ => setTimeout($, ms));
 
