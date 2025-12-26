@@ -21,6 +21,7 @@ const {
 } = require('../shared/symbols.js');
 
 const {
+  htmlToFragment,
   ignoreCase,
   knownAdjacent,
   localCase,
@@ -182,7 +183,8 @@ class Element extends ParentNode {
     const text = [];
     let {[NEXT]: next, [END]: end} = this;
     while (next !== end) {
-      if (next.nodeType === TEXT_NODE)
+      const nodeType = next.nodeType;
+      if (nodeType === TEXT_NODE || nodeType === CDATA_SECTION_NODE)
         text.push(next.textContent);
       next = next[NEXT];
     }
@@ -381,9 +383,7 @@ class Element extends ParentNode {
   }
 
   insertAdjacentHTML(position, html) {
-    const template = this.ownerDocument.createElement('template');
-    template.innerHTML = html;
-    this.insertAdjacentElement(position, template.content);
+    this.insertAdjacentElement(position, htmlToFragment(this.ownerDocument, html));
   }
 
   insertAdjacentText(position, text) {
